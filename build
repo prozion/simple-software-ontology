@@ -1,0 +1,58 @@
+#!/bin/bash
+
+VALIDATOR_PATH="$HOME/app/shacl_validator"
+SCRIPT_DIR=$( cd -- "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+ROOT=$SCRIPT_DIR
+
+cd "$TABTREE_LIB"
+
+case $1 in
+
+all )
+
+  SRC="$ROOT/source/all.tree"
+  TARGET="$ROOT/target/all.ttl"
+;;
+
+ontology )
+
+  SRC="$ROOT/source/ontology.tree"
+  TARGET="$ROOT/target/ontology.ttl"
+;;
+
+help )
+  echo "*** Ontology build script ***"
+  echo ""
+  echo "Usages:"
+  echo ""
+  echo "./build all - compiles ontology and sample data into one big RDF."
+  echo "./build ontology - compiles standalone ontology."
+  echo ""
+  exit 0
+;;
+
+esac
+
+echo ""
+echo "* Check undeclared objects and predicates"
+clj -M:all-undeclared --tabtree $SRC --ignore-keys ""
+
+echo ""
+echo "* Generate RDF graph (Turtle format) from Tabtree source files"
+clj -M:compile-ttl --source $SRC --target $TARGET
+
+echo ""
+echo "* Generate SHACL shapes"
+clj -M:compile-ttl --source "$ROOT/source/shapes/shapes.shacl.tree" --target "$ROOT/source/shapes/shapes.ttl"
+
+echo ""
+echo "* Validate graph against SHACL shapes"
+cd $ROOT 1>/dev/null
+java -jar $VALIDATOR_PATH/validator.jar -contentToValidate $TARGET -externalShapes "$ROOT/source/shapes/shapes.ttl" -reportSyntax "text/turtle"
+cd - 1>/dev/null
+
+echo ""
+echo "** Graph statistics:"
+arq --data $TARGET --query $ROOT/sparql/kgr_stat.rq
+
+cd - 1>/dev/null

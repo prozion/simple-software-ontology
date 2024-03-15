@@ -1,0 +1,283 @@
+@prefix : <https://prozion.inrupt.net/public/ontologies/simple_software_ontology#> . 
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pto: <http://www.productontology.org/id/> .
+@prefix schema: <https://schema.org/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+:
+  a pto:Knowledge_graph ;
+  rdfs:label "Software ontology with some data to illustrate its use. For denoting individuals, like programming languages, please, don't introduce them in code, but instead use a mechanism of Product Ontology (refer to a name, as it set in wikipedia article URL)" ;
+  rdfs:seeAlso <http://www.productontology.org> .
+
+:Application
+  a owl:Class ;
+  rdfs:subClassOf :Software .
+
+:Basilisk
+  a :Application ;
+  :codeRepository <https://github.com/JustOff/Basilisk> ;
+  :forkedFrom :Firefox ;
+  :language :Cpp, :Javascript ;
+  rdfs:label "Basilisk" .
+
+:Boto3
+  a :DeveloperKit ;
+  :codeRepository <https://github.com/boto/boto3> ;
+  :language :Python ;
+  rdfs:label "Boto3" .
+
+:Boto3-1_24_59
+  a :Version ;
+  rdfs:label "Boto3 1.24.59" ;
+  :versionOf :Boto3 .
+
+:codeRepository
+  a owl:DatatypeProperty ;
+  rdfs:domain :Software ;
+  rdfs:range xsd:anyURI ;
+  rdfs:subPropertyOf owl:topDataProperty .
+
+:Cpp
+  a schema:ComputerLanguage ;
+  owl:sameAs <http://www.productontology.org/id/C%2B%2B> ;
+  rdfs:label "C++" .
+
+:DeveloperKit
+  a owl:Class ;
+  rdfs:subClassOf :Library .
+
+:Firefox
+  a :Application ;
+  rdfs:label "Firefox" .
+
+:FirstVersion
+  a owl:Class ;
+  rdfs:subClassOf :Version .
+
+:forkedBy
+  a owl:ObjectProperty ;
+  rdfs:subPropertyOf :inheritedBy .
+
+:forkedFrom
+  a owl:ObjectProperty ;
+  rdfs:subPropertyOf :inheritedFrom .
+
+:Go
+  a schema:ComputerLanguage ;
+  owl:sameAs <http://www.productontology.org/id/Go_(programming_language)> ;
+  rdfs:label "Go" .
+
+:inheritedBy
+  a owl:ObjectProperty ;
+  owl:inverseOf :inheritedBy ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:inheritedFrom
+  a owl:ObjectProperty ;
+  rdfs:domain :Software ;
+  rdfs:range :Software ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:Javascript
+  a schema:ComputerLanguage ;
+  owl:sameAs pto:JavaScript ;
+  rdfs:label "JavaScript" .
+
+:language
+  a owl:ObjectProperty ;
+  rdfs:domain :Software ;
+  rdfs:range schema:ComputerLanguage ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:Library
+  a owl:Class ;
+  rdfs:subClassOf :Software .
+
+:Mosint
+  a :Application ;
+  :codeRepository <https://github.com/alpkeskin/mosint> ;
+  dc:description "Mosint is an automated email OSINT tool designed to facilitate quick and efficient investigations of target emails." ;
+  :language :Go ;
+  rdfs:label "Mosint" .
+
+:Mosint-1_1
+  a :FirstVersion ;
+  :nextVersion :Mosint-1_2 ;
+  rdfs:label "Mosint v1.1" ;
+  :versionOf :Mosint .
+
+:Mosint-1_2
+  a :Version ;
+  :previousVersion :Mosint-1_1 ;
+  rdfs:label "Mosint v1.2" ;
+  :versionOf :Mosint .
+
+:Mosint-1_3
+  a :Version ;
+  :previousVersion :Mosint-1_2 ;
+  rdfs:label "Mosint v1.3" ;
+  :versionOf :Mosint .
+
+:Mosint-1_4
+  a :Version ;
+  :previousVersion :Mosint-1_3 ;
+  rdfs:label "Mosint v1.4" ;
+  :versionOf :Mosint .
+
+:Mosint-2
+  a :Version ;
+  :previousVersion :Mosint-1_4 ;
+  rdfs:label "Mosint v2" ;
+  :versionOf :Mosint .
+
+:Mosint-2_3
+  a :Version ;
+  :previousVersion :Mosint-2 ;
+  rdfs:label "Mosint v2.3" ;
+  :versionOf :Mosint .
+
+:Mosint-2_3_1
+  a :Version ;
+  :previousVersion :Mosint-2_3 ;
+  rdfs:label "Mosint v2.3.1" ;
+  :versionOf :Mosint .
+
+:Mosint-3_0_0
+  a :Version ;
+  :previousVersion :Mosint-2_3_1 ;
+  rdfs:label "Mosint v3.0.0" ;
+  :releaseDate "2023-09-20"^^xsd:date ;
+  :versionOf :Mosint .
+
+:Nemesis
+  a :Application ;
+  :codeRepository <https://github.com/SpecterOps/Nemesis> ;
+  dc:description "Nemesis is a centralized data processing platform that ingests, enriches, and performs analytics on offensive security assessment data" ;
+  :language :Python ;
+  rdfs:label "Nemesis" ;
+  :usesLibrary :Os_py .
+
+:nextVersion
+  a owl:TransitiveProperty ;
+  rdfs:domain :Version ;
+  rdfs:range :Version ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:Os_py
+  a :Library ;
+  :language :Python ;
+  rdfs:label "os python module" .
+
+owl:Thing
+  a owl:Class .
+
+:previousVersion
+  a owl:TransitiveProperty ;
+  rdfs:domain :Version ;
+  owl:inverseOf :nextVersion ;
+  rdfs:range :Version ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:Python
+  a schema:ComputerLanguage ;
+  owl:sameAs <http://www.productontology.org/id/Python_(programming_language)> ;
+  rdfs:label "Python" .
+
+:releaseDate
+  a owl:DatatypeProperty ;
+  rdfs:domain :Version ;
+  rdfs:range xsd:date ;
+  rdfs:subPropertyOf owl:topDataProperty .
+
+:Software
+  a owl:Class ;
+  rdfs:subClassOf owl:Thing .
+
+:Stmt_Nemesis_usesLibrary_Boto3
+  a rdf:Statement ;
+  rdf:object :Boto3 ;
+  rdf:predicate :usesLibrary ;
+  rdf:subject :Nemesis ;
+  :versionLowerBound :Boto3-1_24_59 .
+
+:Stmt_Vigil_usesLibrary_YARA
+  a rdf:Statement ;
+  rdf:object :YARA ;
+  rdf:predicate :usesLibrary ;
+  rdf:subject :Vigil ;
+  :versionLowerBound :YARA-4_3_1 ;
+  :versionUpperBound :YARA-4_5_0 .
+
+:usesLibrary
+  a owl:ObjectProperty ;
+  rdfs:domain :Software ;
+  rdfs:range :Library ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+  vann:usageNote "It is difficult to consider Library as a part of Software, as it is not solely belongs to Software (for example, the Library code is not the part of Software code, when installed globally), but rather is usually used by a number of applications. So, instead of classical `partOf` let's use `usesLibrary` predicate." .
+
+:Version
+  a owl:Class ;
+  rdfs:subClassOf owl:Thing .
+
+:versionLowerBound
+  a owl:ObjectProperty ;
+  rdfs:domain :Software ;
+  rdfs:range :Version ;
+  rdfs:comment "A bound is inclusive" ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:versionOf
+  a owl:ObjectProperty ;
+  rdfs:domain :Version ;
+  rdfs:range :Software ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:versionUpperBound
+  a owl:ObjectProperty ;
+  rdfs:domain :Software ;
+  rdfs:range :Version ;
+  rdfs:comment "A bound is inclusive" ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:Vigil
+  a :Application ;
+  :codeRepository <https://github.com/deadbits/vigil-llm> ;
+  dc:description "Vigil is an open-source security scanner that detects prompt injections, jailbreaks, and other potential threats to Large Language Models (LLMs)." ;
+  :language :Python ;
+  rdfs:label "Vigil" ;
+  :usesLibrary :YARA .
+
+:YARA
+  a schema:ComputerLanguage, :Library ;
+  :codeRepository <https://github.com/virustotal/yara> ;
+  owl:sameAs <http://www.productontology.org/id/Python_(programming_language)> ;
+  rdfs:label "YARA" .
+
+:YARA-2_0_0
+  a :Version ;
+  rdfs:label "YARA v2.0.0" ;
+  :versionOf :YARA .
+
+:YARA-3_11_0
+  a :Version ;
+  :previousVersion :YARA-2_0_0 ;
+  rdfs:label "YARA v3.11.0" ;
+  :versionOf :YARA .
+
+:YARA-4_3_1
+  a :Version ;
+  :previousVersion :YARA-3_11_0 ;
+  rdfs:label "YARA v4.3.1" ;
+  :versionOf :YARA .
+
+:YARA-4_5_0
+  a :Version ;
+  :previousVersion :YARA-4_3_1 ;
+  rdfs:label "YARA v4.5.0" ;
+  :versionOf :YARA .
+

@@ -1,0 +1,13 @@
+solid_knowledge_graph a:pto/Knowledge_graph ns:https://prozion.inrupt.net/public/ontologies/simple_software_ontology# rdfs/label:"Software ontology with some data to illustrate its use. For denoting individuals, like programming languages, please, don't introduce them in code, but instead use a mechanism of Product Ontology (refer to a name, as it set in wikipedia article URL)" rdfs/seeAlso:http://www.productontology.org
+	namespaces
+		dc ns:http://purl.org/dc/terms/
+		rdf ns:http://www.w3.org/1999/02/22-rdf-syntax-ns#
+		rdfs ns:http://www.w3.org/2000/01/rdf-schema#
+		owl ns:http://www.w3.org/2002/07/owl#
+		pto ns:http://www.productontology.org/id/
+		schema ns:https://schema.org/
+		vann ns:http://purl.org/vocab/vann/
+		xsd ns:http://www.w3.org/2001/XMLSchema#
+	[ontologies/software.tree]
+	individuals
+		[facts/software.tree]

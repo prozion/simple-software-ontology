@@ -1,0 +1,11 @@
+prefix : <https://prozion.inrupt.net/public/ontologies/simple_software_ontology#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+select (count(*) as ?triples)
+       (count(distinct(?s)) as ?subjects)
+       (count(distinct(?p)) as ?predicates)
+       (count(distinct(?o)) as ?objects)
+where {
+  ?s ?p ?o .
+}

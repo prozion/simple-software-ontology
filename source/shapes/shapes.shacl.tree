@@ -1,0 +1,14 @@
+products_shape a:owl/Ontology ns:https://prozion.inrupt.net/public/ontologies/simple_software_ontology/validation#
+	namespaces
+		owl ns:http://www.w3.org/2002/07/owl#
+		rdf ns:http://www.w3.org/1999/02/22-rdf-syntax-ns#
+		rdfs ns:http://www.w3.org/2000/01/rdf-schema#
+		sh ns:http://www.w3.org/ns/shacl#
+		ss ns:https://prozion.inrupt.net/public/ontologies/simple_software_ontology#
+		xsd ns:http://www.w3.org/2001/XMLSchema#
+	individuals
+		SoftwareShape a:sh/NodeShape sh/targetClass:ss/Software sh/closed:false sh/ignoredProperties:`rdf/type` hi-rel:sh/property
+			_1 sh/path:rdfs/label sh/minCount:1 sh/datatype:xsd/string			
+		VersionShape a:sh/NodeShape sh/targetClass:ss/Version hi-rel:sh/property
+			_1 sh/path:rdfs/label sh/minCount:1 sh/datatype:xsd/string 
+			_2 sh/path:ss/versionOf sh/minCount:1 sh/maxCount:1 sh/class:ss/Software

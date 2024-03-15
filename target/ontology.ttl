@@ -1,0 +1,129 @@
+@prefix : <https://prozion.inrupt.net/public/ontologies/simple_software_ontology#> . 
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix schema: <https://schema.org/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+:
+  a owl:Ontology ;
+  rdfs:label "Highly simplistic software ontology" .
+
+:Application
+  a owl:Class ;
+  dc:description "Some application intended for end-users" ;
+  rdfs:subClassOf :Software .
+
+:codeRepository
+  a owl:DatatypeProperty ;
+  rdfs:domain :Software ;
+  rdfs:range xsd:anyURI ;
+  rdfs:subPropertyOf owl:topDataProperty .
+
+dc:description
+  a owl:AnnotationProperty ;
+  vann:usageNote "This allows to annotate classes as well." .
+
+:DeveloperKit
+  a owl:Class ;
+  dc:description "Often some system of libraries and utilities, that facilitates the development of target application" ;
+  rdfs:subClassOf :Library .
+
+:FirstVersion
+  a owl:Class ;
+  dc:description "The first published version of a software." ;
+  rdfs:subClassOf :Version .
+
+:forkedBy
+  a owl:ObjectProperty ;
+  rdfs:subPropertyOf :inheritedBy .
+
+:forkedFrom
+  a owl:ObjectProperty ;
+  dc:description "Software, whose code in some point of time has been copied from a code base of another software, and then evolved independently (a fork)." ;
+  rdfs:subPropertyOf :inheritedFrom .
+
+:inheritedBy
+  a owl:ObjectProperty ;
+  owl:inverseOf :inheritedFrom ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:inheritedFrom
+  a owl:ObjectProperty ;
+  dc:description "Software, whose code base originates from another software" ;
+  rdfs:domain :Software ;
+  rdfs:range :Software ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:language
+  a owl:ObjectProperty ;
+  dc:description "The language of software's code base." ;
+  rdfs:domain :Software ;
+  rdfs:range schema:ComputerLanguage ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:Library
+  a owl:Class ;
+  rdfs:subClassOf :Software .
+
+:nextVersion
+  a owl:TransitiveProperty ;
+  rdfs:domain :Version ;
+  rdfs:range :Version ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+owl:Thing
+  a owl:Class .
+
+:previousVersion
+  a owl:TransitiveProperty ;
+  dc:description "The version of software that is older, than a subject. It is not necessarily the immediately previous." ;
+  rdfs:domain :Version ;
+  owl:inverseOf :nextVersion ;
+  rdfs:range :Version ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:releaseDate
+  a owl:DatatypeProperty ;
+  rdfs:domain :Version ;
+  rdfs:range xsd:date ;
+  rdfs:subPropertyOf owl:topDataProperty .
+
+:Software
+  a owl:Class ;
+  rdfs:subClassOf owl:Thing .
+
+:usesLibrary
+  a owl:ObjectProperty ;
+  rdfs:domain :Software ;
+  rdfs:range :Library ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+  vann:usageNote "It is difficult to consider Library as a part of Software, as it is not solely belongs to Software (for example, the Library code is not the part of Software code, when installed globally), but rather is usually used by a number of applications. So, instead of classical `partOf` let's use `usesLibrary` predicate." .
+
+:Version
+  a owl:Class ;
+  rdfs:subClassOf owl:Thing .
+
+:versionLowerBound
+  a owl:ObjectProperty ;
+  rdfs:domain :Software ;
+  rdfs:range :Version ;
+  rdfs:comment "A bound is inclusive" ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:versionOf
+  a owl:ObjectProperty ;
+  rdfs:domain :Version ;
+  rdfs:range :Software ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:versionUpperBound
+  a owl:ObjectProperty ;
+  rdfs:domain :Software ;
+  rdfs:range :Version ;
+  rdfs:comment "A bound is inclusive" ;
+  rdfs:subPropertyOf owl:topObjectProperty .
+

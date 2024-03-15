@@ -1,0 +1,26 @@
+classes +a:owl/Class +hi-inv-rel:subclass-of
+	owl/Thing
+		Software
+			Application dc/description:"Some application intended for end-users"
+			Library
+				DeveloperKit dc/description:"Often some system of libraries and utilities, that facilitates the development of target application"
+		Version
+			FirstVersion dc/description:"The first published version of a software."
+properties +hi-inv-rel:subproperty-of
+	dc/description a:owl/AnnotationProperty vann/usageNote:"This allows to annotate classes as well."
+	owl/topDataProperty +a:owl/DatatypeProperty
+		codeRepository domain:Software range:xsd/anyURI
+		releaseDate domain:Version range:xsd/date
+	owl/topObjectProperty +a:owl/ObjectProperty
+		inheritedBy owl/inverseOf:inheritedFrom
+			forkedBy
+		inheritedFrom domain:Software range:Software dc/description:"Software, whose code base originates from another software"
+			forkedFrom dc/description:"Software, whose code in some point of time has been copied from a code base of another software, and then evolved independently (a fork)."
+		language domain:Software range:schema/ComputerLanguage dc/description:"The language of software's code base."
+		nextVersion *a:owl/TransitiveProperty domain:Version range:Version
+		previousVersion *a:owl/TransitiveProperty domain:Version range:Version owl/inverseOf:nextVersion dc/description:"The version of software that is older, than a subject. It is not necessarily the immediately previous."
+		usesLibrary domain:Software range:Library vann/usageNote:"It is difficult to consider Library as a part of Software, as it is not solely belongs to Software (for example, the Library code is not the part of Software code, when installed globally), but rather is usually used by a number of applications. So, instead of classical `partOf` let's use `usesLibrary` predicate."
+		versionOf domain:Version range:Software
+		versionLowerBound domain:Software range:Version rdfs/comment:"A bound is inclusive"
+		versionUpperBound domain:Software range:Version rdfs/comment:"A bound is inclusive"
+	

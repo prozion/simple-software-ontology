@@ -1,0 +1,29 @@
+software
+	Basilisk rdfs/label:"Basilisk" a:Application codeRepository:https://github.com/JustOff/Basilisk language:Cpp,Javascript forkedFrom:Firefox
+	Boto3 rdfs/label:"Boto3" a:DeveloperKit codeRepository:https://github.com/boto/boto3 language:Python
+	Firefox rdfs/label:"Firefox" a:Application
+	Mosint rdfs/label:"Mosint" a:Application codeRepository:https://github.com/alpkeskin/mosint language:Go dc/description:"Mosint is an automated email OSINT tool designed to facilitate quick and efficient investigations of target emails."
+	Nemesis rdfs/label:"Nemesis" a:Application codeRepository:https://github.com/SpecterOps/Nemesis usesLibrary:Boto3^versionLowerBound:Boto3-1.24.59 usesLibrary:Os.py language:Python dc/description:"Nemesis is a centralized data processing platform that ingests, enriches, and performs analytics on offensive security assessment data"
+	Os.py rdfs/label:"os python module" a:Library language:Python
+	Vigil rdfs/label:"Vigil" a:Application codeRepository:https://github.com/deadbits/vigil-llm usesLibrary:YARA^versionLowerBound:YARA-4.3.1^versionUpperBound:YARA-4.5.0 language:Python dc/description:"Vigil is an open-source security scanner that detects prompt injections, jailbreaks, and other potential threats to Large Language Models (LLMs)."
+	YARA rdfs/label:"YARA" a:Library codeRepository:https://github.com/virustotal/yara
+versions +a:Version
+	Boto3-1.24.59 rdfs/label:"Boto3 1.24.59" versionOf:Boto3
+	Mosint-3.0.0 rdfs/label:"Mosint v3.0.0" versionOf:Mosint previousVersion:Mosint-2.3.1 releaseDate:20.09.2023
+	Mosint-2.3.1 rdfs/label:"Mosint v2.3.1" versionOf:Mosint previousVersion:Mosint-2.3
+	Mosint-2.3 rdfs/label:"Mosint v2.3" versionOf:Mosint previousVersion:Mosint-2
+	Mosint-2 rdfs/label:"Mosint v2" versionOf:Mosint previousVersion:Mosint-1.4
+	Mosint-1.4 rdfs/label:"Mosint v1.4" versionOf:Mosint previousVersion:Mosint-1.3
+	Mosint-1.3 rdfs/label:"Mosint v1.3" versionOf:Mosint previousVersion:Mosint-1.2
+	Mosint-1.2 rdfs/label:"Mosint v1.2" versionOf:Mosint previousVersion:Mosint-1.1
+	Mosint-1.1 *a:FirstVersion rdfs/label:"Mosint v1.1" versionOf:Mosint nextVersion:Mosint-1.2
+	YARA-4.5.0 rdfs/label:"YARA v4.5.0" versionOf:YARA previousVersion:YARA-4.3.1
+	YARA-4.3.1 rdfs/label:"YARA v4.3.1" versionOf:YARA previousVersion:YARA-3.11.0
+	YARA-3.11.0 rdfs/label:"YARA v3.11.0" versionOf:YARA previousVersion:YARA-2.0.0
+	YARA-2.0.0 rdfs/label:"YARA v2.0.0" versionOf:YARA
+languages +a:schema/ComputerLanguage
+	Cpp rdfs/label:"C++" owl/sameAs:http://www.productontology.org/id/C%2B%2B
+	Go rdfs/label:"Go" owl/sameAs:http://www.productontology.org/id/Go_(programming_language)
+	Javascript rdfs/label:"JavaScript" owl/sameAs:pto/JavaScript
+	Python rdfs/label:"Python" owl/sameAs:http://www.productontology.org/id/Python_(programming_language)
+	YARA rdfs/label:"YARA" owl/sameAs:http://www.productontology.org/id/Python_(programming_language)
