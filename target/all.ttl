@@ -16,6 +16,7 @@
 
 :Application
   a owl:Class ;
+  dc:description "Some application intended for end-users" ;
   rdfs:subClassOf :Software .
 
 :Basilisk
@@ -47,8 +48,13 @@
   owl:sameAs <http://www.productontology.org/id/C%2B%2B> ;
   rdfs:label "C++" .
 
+dc:description
+  a owl:AnnotationProperty ;
+  vann:usageNote "This allows to annotate classes as well." .
+
 :DeveloperKit
   a owl:Class ;
+  dc:description "Often some system of libraries and utilities, that facilitates the development of target application" ;
   rdfs:subClassOf :Library .
 
 :Firefox
@@ -57,6 +63,7 @@
 
 :FirstVersion
   a owl:Class ;
+  dc:description "The first published version of a software." ;
   rdfs:subClassOf :Version .
 
 :forkedBy
@@ -65,6 +72,7 @@
 
 :forkedFrom
   a owl:ObjectProperty ;
+  dc:description "Software, whose code in some point of time has been copied from a code base of another software, and then evolved independently (a fork)." ;
   rdfs:subPropertyOf :inheritedFrom .
 
 :Go
@@ -74,11 +82,12 @@
 
 :inheritedBy
   a owl:ObjectProperty ;
-  owl:inverseOf :inheritedBy ;
+  owl:inverseOf :inheritedFrom ;
   rdfs:subPropertyOf owl:topObjectProperty .
 
 :inheritedFrom
   a owl:ObjectProperty ;
+  dc:description "Software, whose code base originates from another software" ;
   rdfs:domain :Software ;
   rdfs:range :Software ;
   rdfs:subPropertyOf owl:topObjectProperty .
@@ -90,6 +99,7 @@
 
 :language
   a owl:ObjectProperty ;
+  dc:description "The language of software's code base." ;
   rdfs:domain :Software ;
   rdfs:range schema:ComputerLanguage ;
   rdfs:subPropertyOf owl:topObjectProperty .
@@ -178,6 +188,7 @@ owl:Thing
 
 :previousVersion
   a owl:TransitiveProperty ;
+  dc:description "The version of software that is older, than a subject. It is not necessarily the immediately previous." ;
   rdfs:domain :Version ;
   owl:inverseOf :nextVersion ;
   rdfs:range :Version ;
