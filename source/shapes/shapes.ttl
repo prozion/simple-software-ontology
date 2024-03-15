@@ -1,0 +1,40 @@
+@prefix : <https://prozion.inrupt.net/public/ontologies/simple_software_ontology/validation#> . 
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ss: <https://prozion.inrupt.net/public/ontologies/simple_software_ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+:
+  a owl:Ontology .
+
+:SoftwareShape
+  a sh:NodeShape ;
+  sh:closed false ;
+  sh:ignoredProperties (rdf:type) ;
+  sh:property :SoftwareShape_1 ;
+  sh:targetClass ss:Software .
+
+:SoftwareShape_1
+  sh:datatype xsd:string ;
+  sh:minCount 1 ;
+  sh:path rdfs:label .
+
+:VersionShape
+  a sh:NodeShape ;
+  sh:property :VersionShape_1, :VersionShape_2 ;
+  sh:targetClass ss:Version .
+
+:VersionShape_1
+  sh:datatype xsd:string ;
+  sh:minCount 1 ;
+  sh:path rdfs:label .
+
+:VersionShape_2
+  sh:class ss:Software ;
+  sh:maxCount 1 ;
+  sh:minCount 1 ;
+  sh:path ss:versionOf .
+
