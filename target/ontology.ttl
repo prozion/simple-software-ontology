@@ -10,7 +10,7 @@
 
 :
   a owl:Ontology ;
-  rdfs:label "Highly simplistic software ontology" .
+  dc:description "Highly simplistic software ontology" .
 
 :Application
   a owl:Class ;

@@ -11,7 +11,7 @@
 
 :
   a pto:Knowledge_graph ;
-  rdfs:label "Software ontology with some data to illustrate its use. For denoting individuals, like programming languages, please, don't introduce them in code, but instead use a mechanism of Product Ontology (refer to a name, as it set in wikipedia article URL)" ;
+  dc:description "Software ontology with some data to illustrate its use. For denoting individuals, like programming languages, please, don't introduce them in code, but instead use a mechanism of Product Ontology (refer to a name, as it set in wikipedia article URL)" ;
   rdfs:seeAlso <http://www.productontology.org> .
 
 :Application

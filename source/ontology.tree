@@ -1,4 +1,4 @@
-solid_knowledge_graph a:owl/Ontology ns:https://prozion.inrupt.net/public/ontologies/simple_software_ontology# rdfs/label:"Highly simplistic software ontology"
+solid_knowledge_graph a:owl/Ontology ns:https://prozion.inrupt.net/public/ontologies/simple_software_ontology# dc/description:"Highly simplistic software ontology"
 	namespaces
 		dc ns:http://purl.org/dc/terms/
 		rdf ns:http://www.w3.org/1999/02/22-rdf-syntax-ns#
